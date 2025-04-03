@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audiobooks - Bookshelf</title>
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background-color: #f1f1f1; /* Light gray background */
+            color: #333;
+        }
+
+        img{
+            max-width: 200px;
+            max-height: 200px;
+        }
+
+        header {
+            background-color: #2c3e50; /* Dark blue background */
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        header .nav h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            font-weight: 500;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #f39c12; /* Gold color on hover */
+        }
+
+        .hero {
+            background-color: #34495e; /* Slightly lighter dark background */
+            color: white;
+            padding: 60px 20px;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+
+        .hero button {
+            background-color: #007bff; /* Blue button */
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .hero button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+
+        /* Audiobook Section */
+        .audiobook-list {
+            padding: 50px 20px;
+            background-color: #fff;
+            text-align: center;
+        }
+
+        .audiobook-list h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+
+        .audiobooks {
+            display: flex;
+            justify-content: space-around;
+            gap: 30px;
+        }
+
+        .audiobook-card {
+            background-color: #fff;
+            padding: 20px;
+            width: 250px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .audiobook-card:hover {
+            background-color: #f39c12; /* Gold hover effect */
+            color: white;
+        }
+
+        .audiobook-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .audiobook-card p {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .listen-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-size: 1rem;
+        }
+
+        .listen-btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2c3e50; /* Dark blue background */
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 50px;
+        }
+
+        footer p {
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .audiobooks {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .audiobook-card {
+                width: 80%;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav">
+            <h2>Bookshelf</h2>
+            <nav>
+                <ul>
+                    <a href="index.html">Home</a>
+                    <a href="author.html">Authors</a>
+                    <a href="genres.html">Genres</a>
+                    <a href="audiobook.html">Audiobooks</a>
+                    <a href="books.html">Books</a>
+                </ul>
+            </nav>
+        </div>
+        <div class="hero">
+            <h2>Audiobooks</h2>
+            <p>Listen to your favorite books wherever you are, anytime!</p>
+        </div>
+    </header>
+
+    <section class="audiobook-list">
+        <h2>Popular Audiobooks</h2>
+        <div class="audiobooks">
+            <div class="audiobook-card">
+                <h3>Harry Potter and the Goblet of Fire</h3>
+                <di>
+                    <img src="https://listeningbooks.s3.eu-west-2.amazonaws.com/public/books/500x0/11123.jpg">
+                </di>
+                <p>J.K. Rowling</p>
+                <button class="listen-btn" onclick="viewDetails('goblet')">Listen Now</button>
+                <div class="audiobook-detail" id="goblet">
+                    <p>This audiobook will take you through the exciting adventures of Harry Potter's fourth year at Hogwarts. An excellent choice for all ages!</p>
+                </div>
+            </div>
+            <div class="audiobook-card">
+                <h3>A Game of Thrones</h3>
+                <di>
+                    <img src="https://m.media-amazon.com/images/I/51CfXk0yCjL._SL500_.jpg">
+                </di>
+                <p>George R.R. Martin</p>
+                <button class="listen-btn" onclick="viewDetails('thrones')">Listen Now</button>
+                <div class="audiobook-detail" id="thrones">
+                    <p>Embark on a journey through the Seven Kingdoms with political intrigue, dragons, and unforgettable characters.</p>
+                </div>
+            </div>
+            <div class="audiobook-card">
+                <h3>Born a Crime</h3>
+                <di>
+                    <img src="https://m.media-amazon.com/images/I/71dmpOgAKiL._AC_UF1000,1000_QL80_.jpg">
+                </di>
+                <p>Trevor Noah</p>
+                <button class="listen-btn" onclick="viewDetails('borncrime')">Listen Now</button>
+                <div class="audiobook-detail" id="borncrime">
+                    <p>A gripping and humorous memoir from Trevor Noah about growing up in apartheid-era South Africa.</p>
+                </div>
+            </div>
+        </div>
+
+        <br>
+        <br>
+        <br>
+
+        <div class="audiobooks">
+            <div class="audiobook-card">
+                <h3>The Help</h3>
+                <di>
+                    <img src="https://m.media-amazon.com/images/I/81cOyJvUn6L._UF894,1000_QL80_.jpg">
+                </di>
+                <p>Kathryn Stockett</p>
+                <button class="listen-btn" onclick="viewDetails('the help')">Listen Now</button>
+                <div class="audiobook-detail" id="help">
+                    <p>The story is about African Americans working in white households in Jackson, Mississippi, during the early 1960s.</p>
+                </div>
+            </div>
+            <div class="audiobook-card">
+                <h3>The Martian</h3>
+                <di>
+                    <img src="https://m.media-amazon.com/images/I/414J3xG+7+L._SL500_.jpg">
+                </di>
+                <p>Andy Wier</p>
+                <button class="listen-btn" onclick="viewDetails('thrones')">Listen Now</button>
+                <div class="audiobook-detail" id="thrones">
+                    <p>The Martian is a 2011 science fiction debut novel written by Andy Weir. The book was originally self-published on Weir's blog, in a serialized format. </p>
+                </div>
+            </div>
+            <div class="audiobook-card">
+                <h3>The Book Thief</h3>
+                <di>
+                    <img src="https://m.media-amazon.com/images/I/51Rs-tsiwBL._SL500_.jpg">
+                </di>
+                <p>Markus Zusak</p>
+                <button class="listen-btn" onclick="viewDetails('borncrime')">Listen Now</button>
+                <div class="audiobook-detail" id="borncrime">
+                    <p>The Book Thief is a historical fiction novel by the Australian author Markus Zusak, set in Nazi Germany during World War II. Published in 2005</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Copyright &copy; Bookshelf</p>
+    </footer>
+
+    <script>
+        // JavaScript to toggle the visibility of audiobook details
+        function viewDetails(audiobookId) {
+            const audiobookDetail = document.getElementById(audiobookId);
+            
+            if (audiobookDetail.style.display === "block") {
+                audiobookDetail.style.display = "none";
+            } else {
+                audiobookDetail.style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books - Bookshelf</title>
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background-color: #f1f1f1; /* Light gray background */
+            color: #333;
+        }
+        img {
+            max-width: 200px;
+            max-height : 200px;
+
+        }
+
+        header {
+            background-color: #2c3e50; /* Dark blue background */
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        header .nav h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            font-weight: 500;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #f39c12; /* Gold color on hover */
+        }
+
+        .hero {
+            background-color: #34495e; /* Slightly lighter dark background */
+            color: white;
+            padding: 60px 20px;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+
+        .search-bar {
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .search-bar input {
+            padding: 10px;
+            font-size: 1rem;
+            width: 300px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .search-bar button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .search-bar button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Book Section */
+        .book-list {
+            padding: 50px 20px;
+            background-color: #fff;
+            text-align: center;
+        }
+
+        .book-list h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+
+        .books {
+            display: flex;
+            justify-content: space-around;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .book-card {
+            background-color: #fff;
+            padding: 20px;
+            width: 250px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .book-card:hover {
+            background-color: #f39c12; /* Gold hover effect */
+            color: white;
+        }
+
+        .book-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .book-card p {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .book-card .price {
+            font-size: 1.2rem;
+            color: #e74c3c; /* Red color for price */
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .read-btn, .purchase-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-size: 1rem;
+        }
+
+        .read-btn:hover, .purchase-btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2c3e50; /* Dark blue background */
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 50px;
+        }
+
+        footer p {
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .books {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .book-card {
+                width: 80%;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav">
+            <h2>Bookshelf</h2>
+            <nav>
+                <ul>
+                    <a href="index.html">Home</a>
+                    <a href="author.html">Authors</a>
+                    <a href="genres.html">Genres</a>
+                    <a href="audiobook.html">Audiobooks</a>
+                    <a href="books.html">Books</a>
+                </ul>
+            </nav>
+        </div>
+        <div class="hero">
+            <h2>Books</h2>
+            <p>Explore a wide range of books for all ages and interests!</p>
+        </div>
+    </header>
+
+    <!-- Search Bar Section -->
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search for books...">
+        <button onclick="searchBooks()">Search</button>
+    </div>
+
+    <section class="book-list">
+        <h2>Popular Books</h2>
+        <div class="books" id="books">
+            <!-- Book Cards -->
+
+            <!-- The Jungle Book -->
+            <div class="book-card">
+                <h3>The Jungle Book</h3>
+                <div><img src = "https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/the-jungle-book-et00040648-08-10-2016-03-55-12.jpg" ></div>
+                <p>Rudyard Kipling</p>
+                <div class="price">$14.99</div>
+                <button class="read-btn" onclick="viewBookDetails('jungle')">Read More</button>
+                <button class="purchase-btn" onclick="purchaseBook('The Jungle Book')">Purchase</button>
+                <div class="book-detail" id="jungle">
+                    <p>Follow Mowgli's adventures as he grows up in the jungle, guided by the wise panther Bagheera and the carefree bear Baloo. An exciting tale of survival and friendship.</p>
+                </div>
+            </div>
+
+            <!-- Wings of Fire -->
+            <div class="book-card">
+                <h3>Wings of Fire</h3>
+                <div><img src = "https://m.media-amazon.com/images/I/71KKZlVjbwL._AC_UF1000,1000_QL80_.jpg" ></div>
+                <p>Dr. A.P.J. Abdul Kalam</p>
+                <div class="price">$12.99</div>
+                <button class="read-btn" onclick="viewBookDetails('wingsOfFire')">Read More</button>
+                <button class="purchase-btn" onclick="purchaseBook('Wings of Fire')">Purchase</button>
+                <div class="book-detail" id="wingsOfFire">
+                    <p>Autobiography of Dr. A.P.J. Abdul Kalam, showcasing his childhood, education, and the milestones of his scientific career.</p>
+                </div>
+            </div>
+
+            <!-- Ignited Minds -->
+            <div class="book-card">
+                <h3>Ignited Minds</h3>
+                <div><img src = "https://m.media-amazon.com/images/I/81y66NkOkpL.jpg" ></div>
+                <p>Dr. A.P.J. Abdul Kalam</p>
+                <div class="price">$14.99</div>
+                <button class="read-btn" onclick="viewBookDetails('ignitedMinds')">Read More</button>
+                <button class="purchase-btn" onclick="purchaseBook('Ignited Minds')">Purchase</button>
+                <div class="book-detail" id="ignitedMinds">
+                    <p>Dr. A.P.J. Abdul Kalam's vision for the future of India, emphasizing the importance of youth in realizing the nation's potential.</p>
+                </div>
+            </div>
+
+            <!-- The White Tiger -->
+            <div class="book-card">
+                <h3>The White Tiger</h3>
+                <div><img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgnkXGRyzc2Tyjh3oP7Ed7qvCB4P0WCBtAAg&s" ></div>
+                <p>Aravind Adiga</p>
+                <div class="price">$18.99</div>
+                <button class="read-btn" onclick="viewBookDetails('whiteTiger')">Read More</button>
+                <button class="purchase-btn" onclick="purchaseBook('The White Tiger')">Purchase</button>
+                <div class="book-detail" id="whiteTiger">
+                    <p>Aravind Adiga's dark, gripping tale of a poor man’s journey to break free from the shackles of society in modern India.</p>
+                </div>
+            </div>
+
+            <!-- The God of Small Things -->
+            <div class="book-card">
+                <h3>The God of Small Things</h3>
+                <div><img src = "https://m.media-amazon.com/images/I/91saO95VziL.jpg" ></div>
+                <p>Arundhati Roy</p>
+                <div class="price">$16.99</div>
+                <button class="read-btn" onclick="viewBookDetails('godOfSmallThings')">Read More</button>
+                <button class="purchase-btn" onclick="purchaseBook('The God of Small Things')">Purchase</button>
+                <div class="book-detail" id="godOfSmallThings">
+                    <p>Arundhati Roy’s debut novel set in Kerala, India, that explores the complex relationships and tragedies that shape the lives of the characters.</p>
+                </div>
+            </div>
+
+            <!-- The Great Indian Novel -->
+            <div class="book-card">
+                <h3>The Great Indian Novel</h3>
+                <div><img src = "https://m.media-amazon.com/images/I/81Lfw-skUsL.jpg" ></div>
+                <p>Shashi Tharoor</p>
+                <div class="price">$15.99</div>
+                <button class="read-btn" onclick="viewBookDetails('greatIndianNovel')">Read More</button>
+                <button class="purchase-btn" onclick="purchaseBook('The Great Indian Novel')">Purchase</button>
+                <div class="book-detail" id="greatIndianNovel">
+                    <p>Shashi Tharoor's satirical retelling of Indian history, blending myth, politics, and modern-day society.</p>
+                </div>
+            </div>
+
+            <!-- The Guide -->
+            <div class="book-card">
+                <h3>The Guide</h3>
+                <div><img src = "https://upload.wikimedia.org/wikipedia/en/a/a4/TheGuide.jpg" ></div>
+                <p>R.K. Narayan</p>
+                <div class="price">$12.99</div>
+                <button class="read-btn" onclick="viewBookDetails('guide')">Read More</button>
+                <button class="purchase-btn" onclick="purchaseBook('The Guide')">Purchase</button>
+                <div class="book-detail" id="guide">
+                    <p>R.K. Narayan's classic novel about a man’s journey from a life of aimless wandering to becoming a spiritual leader.</p>
+                </div>
+            </div>
+
+            <!-- Malgudi Days -->
+            <div class="book-card">
+                <h3>Malgudi Days</h3>
+                <div><img src = "https://m.media-amazon.com/images/I/71ElZHu1QpL._AC_UF1000,1000_QL80_.jpg" ></div>
+                <p>R.K. Narayan</p>
+                <div class="price">$13.99</div>
+                <button class="read-btn" onclick="viewBookDetails('malgudiDays')">Read More</button>
+                <button class="purchase-btn" onclick="purchaseBook('Malgudi Days')">Purchase</button>
+                <div class="book-detail" id="malgudiDays">
+                    <p>A collection of short stories set in the fictional town of Malgudi, exploring various aspects of Indian society and life.</p>
+                </div>
+            </div>
+
+            <!-- Midnight's Children -->
+            <div class="book-card">
+                <h3>Midnight's Children</h3>
+                <div><img src = "https://m.media-amazon.com/images/I/91dUJ+ozKvL._AC_UF1000,1000_QL80_.jpg" ></div>
+                <p>Salman Rushdie</p>
+                <div class="price">$18.99</div>
+                <button class="read-btn" onclick="viewBookDetails('midnightsChildren')">Read More</button>
+                <button class="purchase-btn" onclick="purchaseBook('Midnight\'s Children')">Purchase</button>
+                <div class="book-detail" id="midnightsChildren">
+                    <p>Salman Rushdie’s magical realist novel about India’s partition and the lives of children born in the first hour of independence.</p>
+                </div>
+            </div>
+
+            <!-- The Palace of Illusions -->
+            <div class="book-card">
+                <h3>The Palace of Illusions</h3>
+                <div><img src = "https://m.media-amazon.com/images/I/51HkhnXXvLL._UF1000,1000_QL80_.jpg" ></div>
+                <p>Chitra Banerjee Divakaruni</p>
+                <div class="price">$15.99</div>
+                <button class="read-btn" onclick="viewBookDetails('palaceOfIllusions')">Read More</button>
+                <button class="purchase-btn" onclick="purchaseBook('The Palace of Illusions')">Purchase</button>
+                <div class="book-detail" id="palaceOfIllusions">
+                    <p>A retelling of the Mahabharata from the perspective of Panchali, the wife of the Pandavas, highlighting themes of power, love, and destiny.</p>
+                </div>
+            </div>
+
+            <!-- Pachinko -->
+            <div class="book-card">
+                <h3>Pachinko</h3>
+                <div><img src = "https://m.media-amazon.com/images/I/81Z-DV78CnL._AC_UF1000,1000_QL80_.jpg" ></div>
+                <p>Min Jin Lee</p>
+                <div class="price">$17.99</div>
+                <button class="read-btn" onclick="viewBookDetails('pachinko')">Read More</button>
+                <button class="purchase-btn" onclick="purchaseBook('Pachinko')">Purchase</button>
+                <div class="book-detail" id="pachinko">
+                    <p>Min Jin Lee’s multigenerational saga about a Korean family in Japan, navigating challenges of identity, belonging, and survival.</p>
+                </div>
+            </div>
+
+            <!-- Gitanjali -->
+            <div class="book-card">
+                <h3>Gitanjali</h3>
+                <div><img src = "https://www.maplepress.co.in/cdn/shop/products/9789352230754.jpg?v=1624804858" ></div>
+                <p>Rabindranath Tagore</p>
+                <div class="price">$9.99</div>
+                <button class="read-btn" onclick="viewBookDetails('gitanjali')">Read More</button>
+                <button class="purchase-btn" onclick="purchaseBook('Gitanjali')">Purchase</button>
+                <div class="book-detail" id="gitanjali">
+                    <p>Rabindranath Tagore’s collection of poems that explore the relationship between the human and the divine.</p>
+                </div>
+            </div>
+
+            <!-- The Shadow Lines -->
+            <div class="book-card">
+                <h3>The Shadow Lines</h3>
+                <div><img src = "https://m.media-amazon.com/images/I/813Aot4k7aL._UF1000,1000_QL80_.jpg" ></div>
+                <p>Amitav Ghosh</p>
+                <div class="price">$14.99</div>
+                <button class="read-btn" onclick="viewBookDetails('shadowLines')">Read More</button>
+                <button class="purchase-btn" onclick="purchaseBook('The Shadow Lines')">Purchase</button>
+                <div class="book-detail" id="shadowLines">
+                    <p>Amitav Ghosh’s novel about the complexities of identity and the borders between nations, tracing the narrator's family history.</p>
+                </div>
+            </div>
+
+            <!-- Wise and Other Wise -->
+            <div class="book-card">
+                <h3>Wise and Other Wise</h3>
+                <div><img src = "https://m.media-amazon.com/images/I/81HP7-DUQKL.jpg" ></div>
+                <p>S. S. Gill</p>
+                <div class="price">$11.99</div>
+                <button class="read-btn" onclick="viewBookDetails('wiseAndOtherWise')">Read More</button>
+                <button class="purchase-btn" onclick="purchaseBook('Wise and Other Wise')">Purchase</button>
+                <div class="book-detail" id="wiseAndOtherWise">
+                    <p>A thought-provoking collection of stories on wisdom and life lessons, blending humor with insights into human nature.</p>
+                </div>
+            </div>
+
+            <!-- Born a Crime -->
+            <div class="book-card">
+                <h3>Born a Crime</h3>
+                <div><img src = "https://m.media-amazon.com/images/I/81jXsZ45WAL.jpg" ></div>
+                <p>Trevor Noah</p>
+                <div class="price">$17.50</div>
+                <button class="read-btn" onclick="viewBookDetails('bornACrime')">Read More</button>
+                <button class="purchase-btn" onclick="purchaseBook('Born a Crime')">Purchase</button>
+                <div class="book-detail" id="bornACrime">
+                    <p>Trevor Noah’s memoir about growing up in apartheid South Africa, filled with humor, pain, and profound insight into race and identity.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <p>Copyright &copy; Bookshelf</p>
+    </footer>
+
+    <script>
+        // JavaScript to toggle the visibility of book details
+        function viewBookDetails(bookId) {
+            const bookDetail = document.getElementById(bookId);
+            
+            if (bookDetail.style.display === "block") {
+                bookDetail.style.display = "none";
+            } else {
+                bookDetail.style.display = "block";
+            }
+        }
+
+        // Function to search books
+        function searchBooks() {
+            const input = document.getElementById("searchInput").value.toLowerCase();
+            const books = document.querySelectorAll(".book-card");
+
+            books.forEach(book => {
+                const title = book.querySelector("h3").textContent.toLowerCase();
+                const author = book.querySelector("p").textContent.toLowerCase();
+
+                if (title.includes(input) || author.includes(input)) {
+                    book.style.display = "block";
+                } else {
+                    book.style.display = "none";
+                }
+            });
+        }
+
+        // Function to handle purchase button click
+        function purchaseBook(bookTitle) {
+            alert(`Thank you for purchasing "${bookTitle}"!`);
+        }
+    </script>
+</body>
+</html>

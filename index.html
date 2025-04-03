@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookshelf</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background-color: #f1f1f1;
+            color: #333;
+        }
+
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            font-weight: 500;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #f39c12;
+        }
+
+        .hero {
+            background-color: #34495e;
+            color: white;
+            padding: 60px 20px;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+
+        .hero button {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .hero button:hover {
+            background-color: #0056b3;
+        }
+
+        /* New Promotional Banner Section */
+        .promo-banner {
+            background-color: #e74c3c; /* Red background for the promo */
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 30px 0;
+            border-radius: 10px;
+        }
+
+        .promo-banner span {
+            font-size: 2rem;
+            color: #f39c12; /* Gold text for emphasis */
+        }
+
+        .promo-banner a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            background-color: #f39c12;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .promo-banner a:hover {
+            background-color: #e67e22;
+        }
+
+        /* Authors Section */
+        .authors {
+            padding: 50px 20px;
+            background-color: #ecf0f1;
+            text-align: center;
+        }
+
+        .authors h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+
+        .author-cards {
+            display: flex;
+            justify-content: space-around;
+            gap: 30px;
+            text-decoration: none;
+        }
+
+        .card {
+            background-color: white;
+            padding: 20px;
+            width: 200px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            background-color: #f39c12;
+            color: white;
+        }
+
+        /* Audiobooks Section */
+        .audiobooks {
+            padding: 50px 20px;
+            background-color: #fff;
+            text-align: center;
+        }
+
+        .audiobooks h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        .books {
+            display: flex;
+            justify-content: space-around;
+            gap: 30px;
+        }
+
+        .book {
+            background-color: #f39c12;
+            padding: 15px;
+            width: 250px;
+            border-radius: 8px;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .book:hover {
+            background-color: #e67e22;
+        }
+
+        /* Genres Section */
+        .genres {
+            padding: 50px 20px;
+            background-color: #ecf0f1;
+            text-align: center;
+        }
+
+        .genres h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        .genre-list {
+            display: flex;
+            justify-content: space-around;
+            gap: 30px;
+        }
+
+        .genre {
+            background-color: #3498db;
+            padding: 20px;
+            width: 200px;
+            border-radius: 8px;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .genre:hover {
+            background-color: #2980b9;
+        }
+
+        /* Books Showcase Section */
+        .books-showcase {
+            padding: 50px 20px;
+            background-color: #fff;
+            text-align: center;
+        }
+
+        .books-showcase h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        .book-cards {
+            display: flex;
+            justify-content: space-around;
+            gap: 30px;
+        }
+
+        .book-card {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            width: 250px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+            cursor: pointer;
+            
+        }
+
+        .book-card:hover {
+            background-color: #34495e;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 50px;
+        }
+
+        footer p {
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .author-cards,
+            .books,
+            .genre-list,
+            .book-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .card,
+            .book,
+            .genre,
+            .book-card {
+                width: 80%;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="nav">
+            <h2>Bookshelf</h2>
+            <nav>
+                <ul>
+                    <a href="index.html">Home</a>
+                    <a href="author.html">Authors</a>
+                    <a href="genres.html">Genres</a>
+                    <a href="audiobook.html">Audiobooks</a>
+                    <a href="books.html">Books</a>
+                </ul>
+            </nav>
+        </div>
+        <div class="hero">
+            <h2>Bookshelf</h2>
+            <button><a href="https://www.goodreads.com/list/tag/best">Discover</a></button>
+        </div>
+    </header>
+
+    <!-- Promotional Banner -->
+    <div class="promo-banner">
+        <p>Get up to <span>50% OFF</span> on selected books!</p>
+       <!-- <a href="https://www.example.com/shop">Shop Now</a>-->
+    </div>
+
+    <section class="authors">
+        <h2>Authors</h2>
+        <div class="author-cards">
+            <div class="card"><a href="https://www.goodreads.com/list/show/13143.Best_Authors_Ever">Top Authors</a></div>
+            <div class="card"><a href="https://www.goodreads.com/list/show/166256.Indian_Women_Authors">Female Authors</a></div>
+            <div class="card"><a href="https://www.goodreads.com/shelf/show/greek-authors">Greek Originals</a></div>
+        </div>
+    </section>
+
+    <section class="audiobooks">
+        <h2>Audiobooks</h2>
+        <div class="books">
+            <div class="book"><a href="https://hpaudiobooks.app/4-harry-potter-goblet-fire-audio-book-read-stephen-fry/">Harry Potter and the Goblet of Fire</a></div>
+            <div class="book"><a href="https://www.audible.in/pd/A-Game-of-Thrones-Audiobook/B07B611P78">A Game of Thrones</a></div>
+            <div class="book"><a href="https://www.audible.in/?ref=Adbl_ip_rdr_from_US&source_code=AUDTM002080318002F&ipRedirectFrom=US&ipRedirectOriginalURL=pd%2FBorn-a-Crime-Audiobook%2FB01IW9TQPK">Born a Crime</a></div>
+        </div>
+    </section>
+
+    <section class="genres">
+        <h2>Authors by Genres</h2>
+        <div class="genre-list">
+            <div class="genre"><a href="https://www.goodreads.com/genres/mystery">Mystery</a></div>
+            <div class="genre"><a href="https://www.goodreads.com/list/show/11.Best_Crime_Mystery_Books">Crime</a></div>
+            <div class="genre"><a href="https://www.goodreads.com/genres/fantasy">Fantasy</a></div>
+        </div>
+    </section>
+
+    <section class="books-showcase">
+        <h2>Books Showcase</h2>
+        <div class="book-cards">
+            <div class="book-card"><a href="books.html">Jungle Book</a> </div>
+            <div class="book-card"><a href="books.html">The Wolf Wilder</a></div>
+            <div class="book-card"><a href="books.html">Cogheart</a></div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Copyright &copy; Bookshelf</p>
+    </footer>
+</body>
+
+</html>

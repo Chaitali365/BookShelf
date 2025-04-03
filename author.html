@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authors - Bookshelf</title>
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background-color: #f1f1f1; /* Light gray background */
+            color: #333;
+        }
+
+        header {
+            background-color: #2c3e50; /* Dark blue background */
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #f39c12; /* Gold color on hover */
+        }
+
+        .hero {
+            background-color: #34495e; /* Slightly lighter dark background */
+            color: white;
+            padding: 60px 20px;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-top: 30px;
+            color: #2c3e50;
+        }
+
+        /* Author Cards */
+        .author-list {
+            padding: 50px 20px;
+            background-color: #ecf0f1; /* Very light gray background */
+        }
+
+        .authors {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .author-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            width: 250px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .author-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+            background-color: #f39c12; /* Gold hover effect */
+            color: white;
+        
+        }
+
+        .author-card img {
+            width: 100%;
+            height: fit-content;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .author-card h3 {
+            font-size: 1.6rem;
+            color: #2c3e50;
+            margin-bottom: 12px;
+        }
+
+        .author-card p {
+            font-size: 1rem;
+            color: #7f8c8d; /* Light gray text for description */
+            margin-bottom: 15px;
+        }
+
+        .view-books-btn {
+            background-color: #007bff; /* Blue background */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s, transform 0.3s;
+        
+        }
+
+        .view-books-btn:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+            transform: scale(1.05);
+        }
+
+        .author-detail {
+            display: none;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+
+        footer {
+            background-color: #2c3e50; /* Dark background */
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 50px;
+        }
+
+        footer p {
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .authors {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .author-card {
+                width: 80%;
+                max-width: 300px;
+                margin-bottom: 30px;
+            }
+
+            header, .hero {
+                padding: 20px;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            nav a {
+                font-size: 1rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav">
+            <h2 style="color: #ddd;">Bookshelf</h2>
+            <nav>
+                <ul>
+                    <a href="index.html">Home</a>
+                    <a href="author.html">Authors</a>
+                    <a href="genres.html">Genres</a>
+                    <a href="audiobook.html">Audiobooks</a>
+                    <a href="books.html">Books</a>
+                </ul>
+            </nav>
+        </div>
+        <div class="hero">
+            <h2 style="color:white;">Authors</h2>
+            <p>Explore the works of your favorite authors.</p>
+        </div>
+    </header>
+
+    <section class="author-list">
+        <h2>Popular Authors</h2>
+        <div class="authors">
+            <div class="author-card">
+                <img src="data:image/webp;base64,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" alt=" Rabindranath Tagore">
+                <h3> Rabindranath Tagore</h3>
+                <p>Noble Prize winner in LITERETURE in 1913.</p>
+                <button class="view-books-btn" onclick="viewBooks('tagore')"><a href="https://www.goodreads.com/author/list/36913.Rabindranath_Tagore">View Books</a></button>
+                <div class="author-detail" id="tagore">
+                    <p>Famous for the National Anthem of India and Gitangali Novel.</p>
+                </div>
+            </div>
+            <div class="author-card">
+                <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcT8LcixqcMIiOkPFYZNXiL-eci7vwvyN-fyMb0dHuxeKCtw997yP7uZ053TFr-cgjewXZ8ZEdCpuDp8jbTpWKsTiezxfGsC-jruVtt5Tg" alt="J.K. Rowling">
+                <h3>J.K. Rowling</h3>
+                <p>Author of the Harry Potter series.</p>
+                <button class="view-books-btn" onclick="viewBooks('rowling')"><a href="https://www.goodreads.com/author/list/1077326.J_K_Rowling">View Books</a></button>
+                <div class="author-detail" id="rowling">
+                    <p>Famous for the Harry Potter books that have captivated readers of all ages.</p>
+                </div>
+            </div>
+            <div class="author-card">
+                <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSXmk45v7RpJSfRO37vBtGPx3lLEsy-7_DLB8I3zsVVBHZ8u0ITWoRtimO1cO53oFNZLVelXR1s0qfDnPwWDbV7nw" alt="George R.R. Martin">
+                <h3>George R.R. Martin</h3>
+                <p>Author of the A Song of Ice and Fire series.</p>
+                <button class="view-books-btn" onclick="viewBooks('martin')"><a href="https://www.goodreads.com/series/list/346732.George_R_R_Martin.html">View Books</a></button>
+                <div class="author-detail" id="martin">
+                    <p>Known for the epic fantasy series A Song of Ice and Fire, which inspired the TV show Game of Thrones.</p>
+                </div>
+            </div>
+            <div class="author-card">
+                <img src="https://hips.hearstapps.com/hmg-prod/images/trevor-noah-winner-of-outstanding-talk-series-for-the-daily-news-photo-1707091632.jpg?crop=0.415xw:0.622xh;0.274xw,0.0204xh&resize=640:*" alt="Trevor Noah">
+                <h3>Trevor Noah</h3>
+                <p>Author of Born a Crime.</p>
+                <button class="view-books-btn" onclick="viewBooks('noah')"><a href="https://www.goodreads.com/author/list/15149526.Trevor_Noah">View Books</a></button>
+                <div class="author-detail" id="noah">
+                    <p>Trevor Noah's memoir, Born a Crime, explores his life in apartheid South Africa with humor and insight.</p>
+                </div>
+            </div>
+            <div class="author-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/9d/Sudha_Murthy_ji_in_2023.jpg" alt="Sudha Murty">
+                <h3>Sudha Murty </h3>
+                <p>Author, philanthropist, educator, engineer, and public speaker</p>
+                <button class="view-books-btn" onclick="viewBooks('Murty')"><a href="https://www.goodreads.com/shelf/show/sudha-murthy">View Books</a></button>
+                <div class="author-detail" id="Murty">
+                    <p>Murty is best known for her philanthropy and her contribution to literature in Kannada and English. .</p>
+                </div>
+            </div>
+        </div>
+
+        <br>
+        <br>
+        <br>
+
+        
+        <div class="authors">
+            <div class="author-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZT93r3out4_jE9kxjxy6LatnYLDOkdIPFGw&s" alt="Arundhati Roy">
+                <h3>Arundhati Roy</h3>
+                <p>Indian author best known for her novel The God of Small Things.</p>
+                <button class="view-books-btn" onclick="viewBooks('roy')"><a href="https://www.goodreads.com/author/list/6134.Arundhati_Roy">View Books</a></button>
+                <div class="author-detail" id="roy">
+                    <p>Indian author best known for her novel The God of Small Things, which won the Booker Prize for Fiction in 1997.</p>
+                </div>Famous f
+            </div>
+            <div class="author-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-2Cc221zpjt5_Z0v_HIw-N4JZCJ_9d5garQ&s" alt="Salman Rushdie">
+                <h3> Salman Rushdie</h3>
+                <p>Sir Ahmed Salman Rushdie CH FRSL is an Indian-born British and American novelist..</p>
+                <button class="view-books-btn" onclick="viewBooks('rushdie')"><a href="https://www.goodreads.com/author/show/3299.Salman_Rushdie">View Books</a></button>
+                <div class="author-detail" id="rushdie">
+                    <p>His work often combines magic realism with historical fiction and primarily deals with connections, disruptions, and migrations between Eastern and Western civilizations.</p>
+                </div>
+            </div>
+            <div class="author-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYcpgAiuuti4dOX1RfSt5A0ov8Jhi9T-y9KQ&s" alt="R. K. Narayan">
+                <h3>R. K. Narayan</h3>
+                <p>Author of the Malgudi Days.</p>
+                <button class="view-books-btn" onclick="viewBooks('narayan')"><a href="https://www.goodreads.com/author/show/1305302.R_K_Narayan">View Books</a></button>
+                <div class="author-detail" id="narayna">
+                    <p>R. K. Narayan is among the best known and most widely read Indian novelists who wrote in English.
+                    </p>
+                </div>
+            </div>
+            <div class="author-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVPv_Ok1_5SbsNKaebRXab5FoBitFdJrFHXQ&s" alt="William Shakespeare">
+                <h3>William shakespeare</h3>
+                <p>Author of Hamlet, most popular, and most puzzling play.</p>
+                <button class="view-books-btn" onclick="viewBooks('Shakespeare')"><a href="https://www.goodreads.com/list/show/495.Best_of_William_Shakespeare">View Books</a></button>
+                <div class="author-detail" id="Shakespeare">
+                    <p>One of the greatest writers in the English language and the world's greatest dramatist..</p>
+                </div>
+            </div>
+            <div class="author-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTteK0gCQic-Luu_M9_0gochPRHu8GDzBCteA&s" alt="Chetan Bhagat">
+                <h3> Chetan Bhagat</h3>
+                <p>Chetan Prakash Bhagat is an Indian author, columnist, screenwriter, and YouTuber</p>
+                <button class="view-books-btn" onclick="viewBooks('bhagat')"><a href="https://www.goodreads.com/author/show/61124.Chetan_Bhagat">View Books</a></button>
+                <div class="author-detail" id="bhagat">
+                    <p>He was named one of Time magazine’s 100 Most Influential People in the World in 2010.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Copyright &copy;  Bookshelf</p>
+    </footer>
+
+    <script>
+        // JavaScript to toggle the visibility of author details
+        function viewBooks(authorId) {
+            const authorDetail = document.getElementById(authorId);
+            
+            if (authorDetail.style.display === "block") {
+                authorDetail.style.display = "none";
+            } else {
+                authorDetail.style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>

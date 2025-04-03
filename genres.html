@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genres - Bookshelf</title>
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        img{
+            max-width: 200px;
+            max-height: 200px;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background-color: #f1f1f1; /* Light gray background */
+            color: #333;
+        }
+
+        header {
+            background-color: #2c3e50; /* Dark blue background */
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        header .nav h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            font-weight: 500;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #f39c12; /* Gold color on hover */
+        }
+
+        .hero {
+            background-color: #34495e; /* Slightly lighter dark background */
+            color: white;
+            padding: 60px 20px;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+
+        .hero button {
+            background-color: #007bff; /* Blue button */
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .hero button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+
+        /* Genre Section */
+        .genre-list {
+            padding: 50px 20px;
+            background-color: #fff;
+            text-align: center;
+        }
+
+        .genre-list h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+
+        .genres {
+            display: flex;
+            justify-content: space-around;
+            gap: 30px;
+        }
+
+        .genre-card {
+            background-color: #fff;
+            padding: 20px;
+            width: 250px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .genre-card:hover {
+            background-color: #f39c12; /* Gold hover effect */
+            color: white;
+        }
+
+        .genre-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .genre-card p {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .view-books-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-size: 1rem;
+        }
+
+        .view-books-btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2c3e50; /* Dark blue background */
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 50px;
+        }
+
+        footer p {
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .genres {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .genre-card {
+                width: 80%;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav">
+            <h2>Bookshelf</h2>
+            <nav>
+                <ul>
+                    <a href="index.html">Home</a>
+                    <a href="author.html">Authors</a>
+                    <a href="genres.html">Genres</a>
+                    <a href="audiobook.html">Audiobooks</a>
+                    <a href="books.html">Books</a>
+                </ul>
+            </nav>
+        </div>
+        <div class="hero">
+            <h2>Genres</h2>
+            <p>Explore books categorized by genre. Find the perfect book for your next adventure!</p>
+        </div>
+    </header>
+
+    <section class="genre-list">
+        <h2>Popular Genres</h2>
+        <div class="genres">
+            <div class="genre-card">
+                <h3>Fantasy</h3>
+                <div>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-m71g2fCrwDrXTdq8EOCzIlDEDNFsSABWNw&s">
+                </div>
+                <p>Explore magical worlds and mythical creatures.</p>
+                <button class="view-books-btn" onclick="viewBooks('fantasy')"><a href="https://www.goodreads.com/genres/fantasy">View Books</a></button>
+                <div class="genre-detail" id="fantasy">
+                    <p>Fantasy books take you into a world of magic, dragons, and epic quests. Some of the most popular fantasy books include the "Harry Potter" series and "The Lord of the Rings".</p>
+                </div>
+            </div>
+            <div class="genre-card">
+                <h3>Mystery</h3>
+                <div>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT29uiwzcbfmd7C6qb7T4CVP2QpAx7TdlRcIA&s">
+                </div>
+                <p>Unravel secrets and solve thrilling puzzles.</p>
+                <button class="view-books-btn" onclick="viewBooks('mystery')"><a href="https://www.goodreads.com/genres/mystery">view Books</a></button>
+                <div class="genre-detail" id="mystery">
+                    <p>Mystery books revolve around solving a puzzle or crime. Authors like Agatha Christie and Arthur Conan Doyle have created iconic characters in this genre.</p>
+                </div>
+            </div>
+            <div class="genre-card">
+                <h3>Adventure</h3>
+                <div>
+                    <img src="https://m.media-amazon.com/images/I/51Xh+Bg9DkL._SL500_.jpg" >
+                </div>
+                <p>Embark on thrilling adventures across the globe.</p>
+                <button class="view-books-btn" onclick="viewBooks('adventure')"><a href="https://www.goodreads.com/genres/adventure">View Books</a></button>
+                <div class="genre-detail" id="adventure">
+                    <p>Adventure books typically follow characters on a journey filled with excitement and peril. Famous works include "Treasure Island" and "The Adventures of Huckleberry Finn".</p>
+                </div>
+            </div>
+        </div>
+
+        <br>
+        <br>
+        <br>
+
+        <div class="genres">
+            <div class="genre-card">
+                <h3>Science Fiction</h3>
+                <div>
+                    <img src="https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1710258350-81Xb8fFEkwL.jpg?crop=1xw:1xh;center,top&resize=980:*">
+                </div>
+                <p>Exploring the potential impact of scientific and technological advancements.</p>
+                <button class="view-books-btn" onclick="viewBooks('sciencefiction')"><a href="https://www.goodreads.com/genres/science-fiction">View Books</a></button>
+                <div class="genre-detail" id="sciencefiction">
+                    <p> Science fiction is found in books, art, television, films, games, theatre, and other media.".</p>
+                </div>
+            </div>
+            <div class="genre-card">
+                <h3>Thriller</h3>
+                <div>
+                    <img src="https://img.buzzfeed.com/buzzfeed-static/static/2021-12/20/0/asset/44f5c58f5188/sub-buzz-5961-1639958921-3.jpg?downsize=900:*&output-format=auto&output-quality=auto">
+                </div>
+                <p>Stories that focus on suspense and excitement, often involving danger and high stakes..</p>
+                <button class="view-books-btn" onclick="viewBooks('thriller')"><a href="https://www.goodreads.com/genres/thriller">View Books</a></button>
+                <div class="genre-detail" id="thriller">
+                    <p>Thrillers are characterized by fast pacing, frequent action, and resourceful heroes .</p>
+                </div>
+            </div>
+            <div class="genre-card">
+                <h3>Historical Fiction</h3>
+                <div>
+                    <img src="https://img.buzzfeed.com/buzzfeed-static/static/2020-08/25/0/asset/81d098e7de23/sub-buzz-12918-1598313727-5.jpg?downsize=900:*&output-format=auto&output-quality=auto">
+                </div>
+                <p>Stories set in the past, often based on real historical events or figures.</p>
+                <button class="view-books-btn" onclick="viewBooks('historical')"><a href="https://www.goodreads.com/shelf/show/historical-fiction">View Books</a></button>
+                <div class="genre-detail" id="historical">
+                    <p>Historical fiction books are narratives set in the past, often featuring real historical events, figures, or settings, aiming to create an immersive and engaging story while also exploring the customs, manners, and social conditions of the period.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Copyright &copy;  Bookshelf</p>
+    </footer>
+
+    <script>
+        // JavaScript to toggle the visibility of genre details
+        function viewBooks(genreId) {
+            const genreDetail = document.getElementById(genreId);
+            
+            if (genreDetail.style.display === "block") {
+                genreDetail.style.display = "none";
+            } else {
+                genreDetail.style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>
